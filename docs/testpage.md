@@ -1,4 +1,6 @@
+theme: minima
 # Introduction
+
 airtable_forms is Statically created templates for pages containing Airtable forms.
 weopfewjofjewo
 ejw
