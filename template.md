@@ -6,7 +6,7 @@ Please follow instructions in the [coding handbook](http://comprop.oii.ox.ac.uk/
 
 # Step 1
 
-Familiarise yourself with the website: [{{ Domain }}]({{ Domain }})
+Familiarise yourself with the website: [{{ Domain }}](http://{{ Domain }})
 
 # Step 2
 

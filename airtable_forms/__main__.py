@@ -33,7 +33,7 @@ def main():
         {k.replace(" ", "_"): v for k, v in x["fields"].items()}
         for x in airtable.get_all(view="Waiting for coding", maxRecords=10)
     ]
-    coders = [{"coder_name": "Alice"}, {"coder_name": "Bob"}]
+    coders = [{"coder_name": "Alice"}, {"coder_name": "Bob"}, {"coder_name": "Charles"}]
 
     # Assign coders for every page
     coders_assigned = [
