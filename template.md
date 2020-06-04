@@ -1,33 +1,26 @@
-# Introduction
-airtable_forms is Statically created templates for pages containing Airtable forms.
-weopfewjofjewo
-ejw
-few
+provenance {{ Provenance }}
+status {{ Status }}
+# Instructions
 
-# Use
-# Requirements
+You are categorising the following news source: {{ Domain }}
 
-# Installation
-## From Github
-To obtain the latest version of this package:
-```
-pip install git+https://github.com/AleksiKnuutila/airtable_forms.git
-```
+Please follow instructions in the [coding handbook](http://comprop.oii.ox.ac.uk/).
 
-## Development
-If you wish to work on this project locally, clone this repo and install it in
-development mode:
+# Step 1
 
-```
-git clone https://github.com/AleksiKnuutila/airtable_forms.git
-cd airtable_forms
-make dev
-```
+Familiarise yourself with the website: [{{ Domain }}]({{ Domain }})
 
-# html here
+# Step 2
+
+Take account of the following background information:
+
+* Size of engagement in past month: {{ Engagement_in_past_month }}
+* Number of public posts in past month: {{ Count_of_public_posts }}
+
+# Step 3
+
+Enter your coding decision with the form below.
 
 <iframe class="airtable-embed"
     src="https://airtable.com/embed/shra38QF3aALor26z?backgroundColor=blue&prefill_Evidence=Foobar" frameborder="0"
     onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
-
-# html stopped
