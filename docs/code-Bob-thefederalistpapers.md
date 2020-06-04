@@ -1,6 +1,6 @@
 # Instructions
 
-You are categorising the following news source: thefederalistpapers.org
+You are categorising the following news source: **thefederalistpapers.org**
 
 Please follow instructions in the [coding handbook](http://comprop.oii.ox.ac.uk/).
 

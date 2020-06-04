@@ -1,6 +1,6 @@
 # Instructions
 
-You are categorising the following news source: globalresearch.ca
+You are categorising the following news source: **globalresearch.ca**
 
 Please follow instructions in the [coding handbook](http://comprop.oii.ox.ac.uk/).
 
