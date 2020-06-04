@@ -1,5 +1,3 @@
-provenance {{ Provenance }}
-status {{ Status }}
 # Instructions
 
 You are categorising the following news source: {{ Domain }}
@@ -22,5 +20,5 @@ Take account of the following background information:
 Enter your coding decision with the form below.
 
 <iframe class="airtable-embed"
-    src="https://airtable.com/embed/shra38QF3aALor26z?backgroundColor=blue&prefill_Evidence=Foobar" frameborder="0"
+    src="https://airtable.com/embed/shra38QF3aALor26z?backgroundColor=blue&prefill_Media_source={{ Media_sources }}&prefill_Coder={{ coder_name }}" frameborder="0"
     onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>

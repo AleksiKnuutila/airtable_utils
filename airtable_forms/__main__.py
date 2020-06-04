@@ -14,9 +14,9 @@ Options:
 import os
 import sys
 
-import chevron
 from airtable import Airtable
 from airtable_forms.common import config, logger
+import chevron
 
 OUTPUT_DIR = "docs/"
 WEB_ROOT = "http://aleksiknuutila.github.io/airtable_forms/"
