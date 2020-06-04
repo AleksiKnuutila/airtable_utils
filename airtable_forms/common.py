@@ -5,7 +5,7 @@ from docopt import docopt
 
 with open("config.yaml", "r") as conf, open("secret.yaml", "r") as secr:
     config = yaml.safe_load(conf) or {}
-    secret_config = yaml.safe_load(secr)
+    secret_config = yaml.safe_load(secr) or {}
 cli_args = {}
 if (
     sys.modules["__main__"].__package__ is None
