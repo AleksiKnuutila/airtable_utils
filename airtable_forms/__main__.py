@@ -1,6 +1,7 @@
 """airtable_forms.
 
 Usage:
+airtable_forms
 airtable_forms -h | --help
 airtable_forms --version
 
@@ -10,16 +11,40 @@ Options:
  --version    Show the version.
 """
 
+import os
 import sys
-from airtable_forms.from_docopt import from_docopt
-from airtable_forms import __version__
+
+import chevron
+from airtable import Airtable
+from airtable_forms.common import config
 
 
-def main(inputargs=None):
+def main():
     """Main entry point of airtable_forms"""
-    if inputargs is None:
-        inputargs = sys.argv[1:] if len(sys.argv) > 1 else ""
-    args = from_docopt(argv=inputargs, docstring=__doc__, version=__version__)
+
+    OUTPUT_DIR="docs/"
+
+    with open("template.md", "r") as f:
+        md_template = f.read()
+
+    airtable = Airtable(config["base-key"], "Media sources", api_key=config["api-key"])
+    media_sources = [
+        x["fields"] for x in airtable.get_all(view="Waiting for coding", maxRecords=10)
+    ]
+    coders = [{"coder_name": "Alice"}, {"coder_name": "Bob"}]
+
+    # Assign coders for every page
+    coders_assigned = [
+        coders[int(idx / (len(media_sources) / len(coders)))]
+        for idx in range(len(media_sources))
+    ]
+
+    for coder, source in zip(coders_assigned, media_sources):
+        page_content = chevron.render(md_template, {**source, **coder})
+
+
+        pass
+
 
 if __name__ == "__main__":
     main()

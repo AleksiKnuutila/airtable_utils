@@ -4,7 +4,7 @@ import yaml
 from docopt import docopt
 
 with open("config.yaml", "r") as conf, open("secret.yaml", "r") as secr:
-    config = yaml.safe_load(conf)
+    config = yaml.safe_load(conf) or {}
     secret_config = yaml.safe_load(secr)
 cli_args = {}
 if (
