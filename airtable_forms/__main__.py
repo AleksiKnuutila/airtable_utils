@@ -42,7 +42,7 @@ def main():
     ]
 
     for coder, source in zip(coders_assigned, media_sources):
-        page_content = chevron.render(md_template, {**source, **coder})
+        page_content = chevron.render(md_template, {**coder, **source})
         page_fn = "code-{}-{}.md".format(
             coder["coder_name"], "".join(source["Domain"].split(".")[:-1])
         )

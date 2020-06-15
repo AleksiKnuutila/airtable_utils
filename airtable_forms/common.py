@@ -8,8 +8,8 @@ with open("config.yaml", "r") as conf, open("secret.yaml", "r") as secr:
     secret_config = yaml.safe_load(secr) or {}
 cli_args = {}
 if (
-    sys.modules["__main__"].__package__ is None
-    or "pytest" not in sys.modules["__main__"].__package__
+    sys.modules["__main__"].__package__
+    and "airtable_forms" in sys.modules["__main__"].__package__
 ):
     cli_args = docopt(
         sys.modules["__main__"].__doc__, version="telegram_collection 0.1"
