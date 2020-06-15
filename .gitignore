@@ -251,3 +251,5 @@ link-targets-NEW.csv
 telegram_collection/public.keys
 dictionaries/
 secret-oldaccount.yaml
+secret-newaccount.yaml
+secret-newaccount.yaml
