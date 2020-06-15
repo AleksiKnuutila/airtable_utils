@@ -15,7 +15,7 @@ import os
 import sys
 
 from airtable import Airtable
-from airtable_forms.common import config, logger
+from airtable_utils.common import config, logger
 import chevron
 
 OUTPUT_DIR = "docs/"

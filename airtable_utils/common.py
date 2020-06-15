@@ -9,7 +9,7 @@ with open("config.yaml", "r") as conf, open("secret.yaml", "r") as secr:
 cli_args = {}
 if (
     sys.modules["__main__"].__package__
-    and "airtable_forms" in sys.modules["__main__"].__package__
+    and "airtable_utils" in sys.modules["__main__"].__package__
 ):
     cli_args = docopt(
         sys.modules["__main__"].__doc__, version="telegram_collection 0.1"
