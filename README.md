@@ -1,22 +1,37 @@
 # Introduction
-airtable_utils is Statically created templates for pages containing Airtable forms. 
+airtable_utils contains code to help with Airtable.
 # Use
-# Requirements
+
+airtable_bot.py and airtable_forms.py can be run as Python scripts.
+
+```
+Usage:
+airtable_bot [--api-key KEY] [--base-key BASE] [--crowdtangle-api-token TOKEN]
+airtable_bot -h | --help
+airtable_bot --version
+
+Options:
+
+ -h --help                  Show this screen.
+ --version                  Show the version.
+ --api-key api-key          Airtable API key
+ --base-key base-key        Airtable base key
+ --crowdtangle-api-token    Crowdtangle token
+```
+
+api-key, base-key and crowdtangle-api-token need to be defined in either secret.yaml or as commandline arguments.
 
 # Installation
-## From Github
-To obtain the latest version of this package:
+
+To get the code:
 ```
-pip install git+https://github.com/AleksiKnuutila/airtable_utils.git
+git clone https://github.com/AleksiKnuutila/airtable_utils
 ```
 
-## Development
-If you wish to work on this project locally, clone this repo and install it in
-development mode:
+# Setting up
 
 ```
-git clone https://github.com/AleksiKnuutila/airtable_utils.git
-cd airtable_utils
-make dev
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
-
