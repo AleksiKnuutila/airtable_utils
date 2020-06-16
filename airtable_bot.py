@@ -26,6 +26,7 @@ from airtable_utils.common import config, logger
 from tqdm import tqdm
 
 
+# not used at the moment
 def screenshot_webpage(url):
     """Make screenshot of page
 
@@ -42,10 +43,12 @@ def screenshot_webpage(url):
 
 
 def empty_record(record):
+    """Check if record is empty"""
     return not "Base URL" in record["fields"]
 
 
 def crowdtangle_engagement(record, *, airtable):
+    """ Engagement statistics based on URL from Crowdtangle """
 
     crowdtangle_posts = posts_search(searchTerm=record["fields"]["Base URL"])
 
@@ -56,6 +59,7 @@ def crowdtangle_engagement(record, *, airtable):
 
 
 def deduplicate(records, *, airtable):
+    """ Remove duplicate rows """
     seen = set()
     duplicates = []
     for record in records:
@@ -72,6 +76,13 @@ def deduplicate(records, *, airtable):
 
 
 def add_background_information(records, *, data_sources, airtable):
+    """ Helper function to collect and add background information on sources
+
+    Args:
+        records: List of records to append
+        data_sources: List of functions that return dicts with information
+        airtable: API object
+    """
 
     for record in tqdm(records):
 
@@ -86,6 +97,7 @@ def add_background_information(records, *, data_sources, airtable):
 
 
 def update_coding_status(records, *, airtable):
+    """ Update status for records that require more coding """
     record_ids = [x["id"] for x in records if len(x["fields"]["Coding decision"]) > 0]
     if record_ids:
         logger.debug("Updating coding status of %s records" % len(record_ids))
@@ -120,9 +132,6 @@ def main():
     all_records = airtable.get_all(view="All records", maxRecords=2000)
     logger.info("Updating coding status")
     update_coding_status(all_records, airtable=airtable)
-
-
-#    mark_ready_for_review(all_records, airtable=airtable)
 
 
 if __name__ == "__main__":
