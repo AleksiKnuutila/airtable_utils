@@ -1,14 +1,17 @@
 """airtable_bot.
 
 Usage:
-airtable_bot
+airtable_bot [--api-key KEY] [--base-key BASE] [--crowdtangle-api-token TOKEN]
 airtable_bot -h | --help
 airtable_bot --version
 
 Options:
 
- -h --help    Show this screen.
- --version    Show the version.
+ -h --help                  Show this screen.
+ --version                  Show the version.
+ --api-key api-key          Airtable API key
+ --base-key base-key        Airtable base key
+ --crowdtangle-api-token    Crowdtangle token
 """
 
 import sys
@@ -78,10 +81,8 @@ def add_background_information(records, *, data_sources, airtable):
         # Merge list of dicts
         fields = {k: v for d in fields for k, v in d.items()}
         fields["Status"] = "Waiting for initial coding"
-        logger.debug("Updating %s" % record["fields"]["Base URL"])
+        tqdm.write("Updating %s" % record["fields"]["Base URL"])
         airtable.update(record["id"], fields)
-
-        tqdm.write(record["fields"]["Base URL"])
 
 
 def update_coding_status(records, *, airtable):
@@ -96,15 +97,20 @@ def main():
     """Main entry point of airtable_bot"""
 
     airtable = Airtable(config["base-key"], "Sources", api_key=config["api-key"])
-
     new_records = airtable.get_all(view="New records", maxRecords=2000)
-    new_records = [x for x in new_records if not empty_record(x)]
+
+    logger.info("Deleting empty records")
+    empty_records = [x["id"] for x in new_records if empty_record(x)]
+    if empty_records:
+        logger.info("Deleted %s empty records" % len(empty_records))
+        airtable.batch_delete(empty_records)
+        new_records = [x for x in new_records if not empty_record(x)]
+
     logger.info("Deduplicating")
     deduplicate(new_records, airtable=airtable)
 
-    new_records = airtable.get_all(view="New records", maxRecords=2000)
-    new_records = [x for x in new_records if not empty_record(x)]
     logger.info("Adding background information")
+    new_records = airtable.get_all(view="New records", maxRecords=2000)
     # List of functions that return background information
     data_sources = [crowdtangle_engagement]
     add_background_information(
